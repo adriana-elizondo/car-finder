@@ -27,16 +27,17 @@ class MapViewController : UIViewController{
     fileprivate var didUpdateWithInitialLocation = false
     
     //Set by previous controller
-    var specificCar : Car? = nil
+    var specificCar : Car? = nil{
+        didSet{
+            guard specificCar != nil else {return}
+            showCarOnMap(car: specificCar!)
+        }
+    }
     var carList : [Car]? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         LocationManagerHelper.sharedInstance.startUpdatingLocation()
-        
-        if let car = specificCar as Car?{
-            showCarOnMap(car: car)
-        }
     }
     
     @IBAction func refreshCarsNearMe(_ sender: Any) {

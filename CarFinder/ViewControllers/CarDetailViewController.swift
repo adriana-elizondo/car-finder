@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CarDetailViewController : UIViewController{
+class CarDetailViewController : MapViewController{
     @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var series: UILabel!
     @IBOutlet weak var fueltype: UILabel!
@@ -28,9 +28,9 @@ class CarDetailViewController : UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if let car = self.car{
             setUpDetail(with: car)
+            self.specificCar = car
         }
     }
     
